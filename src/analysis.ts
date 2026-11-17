@@ -1,0 +1,165 @@
+import type { AnalysisContext, ArmMetrics, Interval, Judgment, MetricCheck, Policy, Rate, RequestObservation } from './domain.ts';
+
+export const ANALYSIS_VERSION = 'clopper-pearson-bonferroni-v2';
+
+function logGamma(x: number): number {
+  const coefficients = [676.5203681218851, -1259.1392167224028, 771.3234287776531,
+    -176.6150291621406, 12.507343278686905, -0.13857109526572012,
+    9.984369578019572e-6, 1.5056327351493116e-7];
+  let sum = 0.9999999999998099;
+  for (let i = 0; i < coefficients.length; i++) sum += coefficients[i] / (x + i);
+  const t = x + 6.5;
+  return 0.9189385332046727 + (x - 0.5) * Math.log(t) - t + Math.log(sum);
+}
+
+function betaFraction(a: number, b: number, x: number): number {
+  const tiny = 1e-300;
+  let c = 1;
+  let d = 1 - (a + b) * x / (a + 1);
+  if (Math.abs(d) < tiny) d = tiny;
+  d = 1 / d;
+  let result = d;
+  for (let m = 1; m <= 300; m++) {
+    for (const numerator of [m * (b - m) * x / ((a + 2 * m - 1) * (a + 2 * m)),
+      -(a + m) * (a + b + m) * x / ((a + 2 * m) * (a + 2 * m + 1))]) {
+      d = 1 + numerator * d;
+      if (Math.abs(d) < tiny) d = tiny;
+      c = 1 + numerator / c;
+      if (Math.abs(c) < tiny) c = tiny;
+      d = 1 / d;
+      const change = d * c;
+      result *= change;
+      if (numerator < 0 && Math.abs(change - 1) < 1e-13) return result;
+    }
+  }
+  throw new Error('Binomial bound did not converge');
+}
+
+function betaCdf(x: number, a: number, b: number): number {
+  if (x <= 0) return 0;
+  if (x >= 1) return 1;
+  const weight = Math.exp(logGamma(a + b) - logGamma(a) - logGamma(b)
+    + a * Math.log(x) + b * Math.log1p(-x));
+  return x < (a + 1) / (a + b + 2)
+    ? weight * betaFraction(a, b, x) / a
+    : 1 - weight * betaFraction(b, a, 1 - x) / b;
+}
+
+function betaQuantile(p: number, a: number, b: number): number {
+  let low = 0;
+  let high = 1;
+  for (let i = 0; i < 60; i++) {
+    const middle = (low + high) / 2;
+    if (betaCdf(middle, a, b) < p) low = middle;
+    else high = middle;
+  }
+  return (low + high) / 2;
+}
+
+export function binomialInterval(k: number, n: number, tailAlpha = 0.025): Interval {
+  if (!Number.isInteger(k) || !Number.isInteger(n) || k < 0 || n < k || tailAlpha <= 0 || tailAlpha >= 0.5) {
+    throw new Error('Binomial counts and tail probability are invalid');
+  }
+  if (n === 0) return { lower: 0, upper: 1 };
+  return {
+    lower: k === 0 ? 0 : k === n ? Math.exp(Math.log(tailAlpha) / n) : betaQuantile(tailAlpha, k, n - k + 1),
+    upper: k === n ? 1 : k === 0 ? -Math.expm1(Math.log(tailAlpha) / n) : 1 - betaQuantile(tailAlpha, n - k, k + 1),
+  };
+}
+
+export function tailProbability(policy: Policy): number {
+  return policy.alpha / (3 * policy.checkpoints.length * (policy.cohorts.length + 1) * 2 * 2 * 2);
+}
+
+function rate(count: number, total: number, alpha: number): Rate {
+  return { count, total, estimate: total ? count / total : null, interval: binomialInterval(count, total, alpha) };
+}
+
+function summarize(arm: 'baseline' | 'candidate', cohort: string, rows: RequestObservation[], policy: Policy): ArmMetrics {
+  const selected = rows.filter(row => row.arm === arm && (cohort === 'overall' || row.cohort === cohort));
+  const known = selected.filter(row => !row.missing);
+  const completed = known.filter(row => row.status !== null && !row.timeout && row.durationMs !== null);
+  const durations = completed.flatMap(row => row.durationMs === null ? [] : [row.durationMs]).sort((a, b) => a - b);
+  const ends = known.map(row => ({ start: row.startedMonoMs, end: row.startedMonoMs + (row.durationMs ?? 0) }));
+  const span = ends.length ? Math.max(...ends.map(row => row.end)) - Math.min(...ends.map(row => row.start)) : 0;
+  const edges = ends.flatMap(row => [{ time: row.start, delta: 1 }, { time: row.end, delta: -1 }]).sort((a, b) => a.time - b.time || b.delta - a.delta);
+  let concurrency = 0;
+  let maxConcurrency = 0;
+  for (const edge of edges) { concurrency += edge.delta; maxConcurrency = Math.max(maxConcurrency, concurrency); }
+  const errors = known.filter(row => row.failed || row.timeout).length;
+  return {
+    arm, cohort, attempted: selected.length, completed: completed.length, failed: errors,
+    timedOut: known.filter(row => row.timeout).length, missing: selected.length - known.length,
+    error: rate(errors, known.length, tailProbability(policy)),
+    slow: rate(known.filter(row => row.durationMs !== null && row.durationMs > policy.slowMs).length, known.length, tailProbability(policy)),
+    p95CompletedMs: durations.length ? durations[Math.ceil(durations.length * 0.95) - 1] : null,
+    censored: known.filter(row => row.status === null).length,
+    achievedRps: span > 0 ? known.length * 1000 / span : null, maxConcurrency,
+  };
+}
+
+export function analyze(policy: Policy, observations: RequestObservation[], context: AnalysisContext): Judgment {
+  const rows = observations.filter(row => row.stage === context.stage && !row.warmup && !row.diagnostic && row.arm !== 'stable');
+  const groups = ['overall', ...policy.cohorts];
+  const metrics = groups.flatMap(cohort => [summarize('baseline', cohort, rows, policy), summarize('candidate', cohort, rows, policy)]);
+  // A fixed cohort mix is stratified: weight simultaneous cohort bounds instead of assuming IID aggregate trials.
+  for (const overall of metrics.filter(metric => metric.cohort === 'overall')) {
+    const cohorts = metrics.filter(metric => metric.arm === overall.arm && metric.cohort !== 'overall');
+    for (const outcome of ['error', 'slow'] satisfies ('error' | 'slow')[]) {
+      if (overall[outcome].total > 0) overall[outcome].interval = {
+        lower: cohorts.reduce((sum, cohort) => sum + cohort[outcome].interval.lower * cohort[outcome].total / overall[outcome].total, 0),
+        upper: cohorts.reduce((sum, cohort) => sum + cohort[outcome].interval.upper * cohort[outcome].total / overall[outcome].total, 0),
+      };
+    }
+  }
+  const overallBaseline = metrics[0];
+  const overallCandidate = metrics[1];
+  const comparableCounts = Math.abs(overallBaseline.attempted - overallCandidate.attempted)
+    / Math.max(1, overallBaseline.attempted, overallCandidate.attempted) <= policy.maxRateImbalance;
+  const comparableCohorts = policy.cohorts.every(cohort => {
+    const baseline = rows.filter(row => row.arm === 'baseline' && row.cohort === cohort).length / Math.max(1, overallBaseline.attempted);
+    const candidate = rows.filter(row => row.arm === 'candidate' && row.cohort === cohort).length / Math.max(1, overallCandidate.attempted);
+    return Math.abs(baseline - candidate) <= policy.maxCohortImbalance;
+  });
+  const integrity = [
+    { name: 'planned checkpoint', passed: policy.checkpoints.includes(context.checkpoint), detail: `Only frozen checkpoints ${policy.checkpoints.join(', ')} authorize a decision.` },
+    { name: 'sample budget', passed: overallBaseline.attempted === context.checkpoint && overallCandidate.attempted === context.checkpoint,
+      detail: `This checkpoint requires exactly ${context.checkpoint} attempts in each arm; observed ${overallBaseline.attempted}/${overallCandidate.attempted}.` },
+    { name: 'required cohorts', passed: metrics.filter(metric => metric.cohort !== 'overall').every(metric => metric.error.total >= policy.minimumPerCohort),
+      detail: `Every required cohort needs ${policy.minimumPerCohort} known outcomes per arm.` },
+    { name: 'complete telemetry', passed: context.telemetryFresh && rows.every(row => !row.missing && row.durationMs !== null
+      && Number.isFinite(row.durationMs) && row.durationMs >= 0 && Number.isFinite(row.startedMonoMs)
+      && row.version !== null && (row.status !== null || row.failed || row.timeout)), detail: 'Missing, stale or malformed request evidence prevents a release decision.' },
+    { name: 'unique observations', passed: new Set(rows.map(row => row.id)).size === rows.length, detail: 'Each attempt must appear exactly once.' },
+    { name: 'declared workload', passed: rows.every(row => policy.cohorts.includes(row.cohort)), detail: 'All measurement cohorts must be declared before the run.' },
+    { name: 'comparable workload', passed: context.workloadComparable && comparableCounts && comparableCohorts, detail: 'Both arms require matched offered load and comparable cohort proportions.' },
+    { name: 'reconciled control', passed: context.controlResolved, detail: 'The observed router generation must match the planned state.' },
+  ];
+  const checks: MetricCheck[] = [];
+  for (let i = 0; i < metrics.length; i += 2) {
+    const baseline = metrics[i];
+    const candidate = metrics[i + 1];
+    for (const outcome of ['error', 'slow'] satisfies ('error' | 'slow')[]) {
+      const tolerance = outcome === 'error' ? policy.errorTolerance : policy.slowTolerance;
+      const baselineLimit = outcome === 'error' ? policy.baselineErrorMax : policy.baselineSlowMax;
+      const degradation = { lower: candidate[outcome].interval.lower - baseline[outcome].interval.upper,
+        upper: candidate[outcome].interval.upper - baseline[outcome].interval.lower };
+      checks.push({ cohort: baseline.cohort, outcome, baseline: baseline[outcome], candidate: candidate[outcome],
+        degradation, tolerance, baselineLimit, baselineHealthy: baseline[outcome].interval.upper <= baselineLimit,
+        status: degradation.upper <= tolerance ? 'within tolerance' : degradation.lower > tolerance ? 'regression' : 'uncertain' });
+    }
+  }
+  const reasons = integrity.filter(check => !check.passed).map(check => `${check.name}: ${check.detail}`);
+  if (checks.some(check => !check.baselineHealthy)) reasons.push('The baseline has not demonstrated the required absolute health limits.');
+  let status: Judgment['status'] = 'inconclusive';
+  if (integrity.every(check => check.passed)) {
+    if (checks.some(check => check.status === 'regression')) status = 'regression detected';
+    else if (checks.every(check => check.status === 'within tolerance' && check.baselineHealthy)) status = 'eligible to advance';
+    else reasons.push('At least one degradation interval crosses its tolerance; collect the next planned checkpoint.');
+  }
+  if (status === 'eligible to advance') reasons.push('Every required cohort and outcome is within tolerance, with a healthy baseline and complete evidence.');
+  if (status === 'regression detected') reasons.push(...checks.filter(check => check.status === 'regression')
+    .map(check => `${check.cohort} ${check.outcome}: the lower degradation bound exceeds the ${check.tolerance * 100}% tolerance.`));
+  return { status, stage: context.stage, checkpoint: context.checkpoint, reasons, checks, metrics, integrity,
+    method: ANALYSIS_VERSION, tailAlpha: tailProbability(policy) };
+}

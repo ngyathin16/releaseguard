@@ -1,0 +1,162 @@
+{
+  "capturedAt": "2026-11-17T06:27:26.039Z",
+  "policy": {
+    "version": "1",
+    "alpha": 0.05,
+    "cohorts": [
+      "desktop",
+      "mobile"
+    ],
+    "errorTolerance": 0.01,
+    "slowTolerance": 0.02,
+    "slowMs": 300,
+    "baselineErrorMax": 0.01,
+    "baselineSlowMax": 0.05,
+    "minimumPerCohort": 800,
+    "checkpoints": [
+      1600,
+      3200
+    ],
+    "stageTimeoutMs": 120000,
+    "telemetryGraceMs": 3000,
+    "leaseMs": 3000,
+    "maxCohortImbalance": 0.05,
+    "maxRateImbalance": 0.15
+  },
+  "source": "real independent HTTP service processes; synthetic seeded requests",
+  "incomplete": false,
+  "rows": [
+    {
+      "scenario": "insufficient-traffic",
+      "seed": 101,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 803,
+      "withdrawalMs": 9.877500000000055,
+      "replayMatched": true,
+      "evidence": "docs/evidence/final-control-runs/insufficient-traffic-101.json.gz"
+    },
+    {
+      "scenario": "insufficient-traffic",
+      "seed": 202,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 803,
+      "withdrawalMs": 8.251500000000306,
+      "replayMatched": true,
+      "evidence": "docs/evidence/final-control-runs/insufficient-traffic-202.json.gz"
+    },
+    {
+      "scenario": "insufficient-traffic",
+      "seed": 303,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 803,
+      "withdrawalMs": 9.030499999999847,
+      "replayMatched": true,
+      "evidence": "docs/evidence/final-control-runs/insufficient-traffic-303.json.gz"
+    },
+    {
+      "scenario": "missing-metrics",
+      "seed": 101,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 803,
+      "withdrawalMs": 8.093899999999849,
+      "replayMatched": true,
+      "evidence": "docs/evidence/final-control-runs/missing-metrics-101.json.gz"
+    },
+    {
+      "scenario": "missing-metrics",
+      "seed": 202,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 803,
+      "withdrawalMs": 8.641999999999825,
+      "replayMatched": true,
+      "evidence": "docs/evidence/final-control-runs/missing-metrics-202.json.gz"
+    },
+    {
+      "scenario": "missing-metrics",
+      "seed": 303,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 803,
+      "withdrawalMs": 9.788199999999051,
+      "replayMatched": true,
+      "evidence": "docs/evidence/final-control-runs/missing-metrics-303.json.gz"
+    },
+    {
+      "scenario": "candidate-crash",
+      "seed": 101,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 803,
+      "withdrawalMs": 6.802999999999884,
+      "replayMatched": true,
+      "evidence": "docs/evidence/final-control-runs/candidate-crash-101.json.gz"
+    },
+    {
+      "scenario": "candidate-crash",
+      "seed": 202,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 803,
+      "withdrawalMs": 8.608899999999267,
+      "replayMatched": true,
+      "evidence": "docs/evidence/final-control-runs/candidate-crash-202.json.gz"
+    },
+    {
+      "scenario": "candidate-crash",
+      "seed": 303,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 803,
+      "withdrawalMs": 7.218400000001566,
+      "replayMatched": true,
+      "evidence": "docs/evidence/final-control-runs/candidate-crash-303.json.gz"
+    },
+    {
+      "scenario": "lease-expiry",
+      "seed": 101,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 18890,
+      "withdrawalMs": 155.53180000000066,
+      "replayMatched": true,
+      "evidence": "docs/evidence/final-control-runs/lease-expiry-101.json.gz"
+    },
+    {
+      "scenario": "lease-expiry",
+      "seed": 202,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 17592,
+      "withdrawalMs": 151.74229999999807,
+      "replayMatched": true,
+      "evidence": "docs/evidence/final-control-runs/lease-expiry-202.json.gz"
+    },
+    {
+      "scenario": "lease-expiry",
+      "seed": 303,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 20003,
+      "withdrawalMs": 164.5645000000004,
+      "replayMatched": true,
+      "evidence": "docs/evidence/final-control-runs/lease-expiry-303.json.gz"
+    }
+  ]
+}

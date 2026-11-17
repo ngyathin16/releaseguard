@@ -1,0 +1,352 @@
+{
+  "analysisVersion": "clopper-pearson-bonferroni-v1",
+  "manifestHash": "6eecb5558f00a8a8a6dac9ddd6a77b87e49418ac2234df9147f82e3e804631b0",
+  "node": "v24.14.0",
+  "generatedAt": "2026-11-17T06:05:58.917Z",
+  "assumptions": "Independent Bernoulli within arm/cohort except the separate correlated stress suite. Synthetic timing only. Bounds are simultaneous across all three stages, both predeclared checkpoints, outcomes, arms, cohorts including overall and tails.",
+  "summary": [
+    {
+      "family": "no-regression",
+      "outcomes": [
+        {
+          "status": "eligible to advance",
+          "count": 133,
+          "total": 200,
+          "rate": 0.665,
+          "uncertainty95": {
+            "lower": 0.5950033586505883,
+            "upper": 0.7300208448426341
+          }
+        },
+        {
+          "status": "regression detected",
+          "count": 0,
+          "total": 200,
+          "rate": 0,
+          "uncertainty95": {
+            "lower": 0,
+            "upper": 0.018275340355136248
+          }
+        },
+        {
+          "status": "inconclusive",
+          "count": 67,
+          "total": 200,
+          "rate": 0.335,
+          "uncertainty95": {
+            "lower": 0.2699791551573659,
+            "upper": 0.4049966413494117
+          }
+        }
+      ],
+      "simpleThreshold": {
+        "eligible to advance": 200,
+        "regression detected": 0,
+        "inconclusive": 0
+      },
+      "changedDecisions": [
+        "healthy-3",
+        "healthy-6",
+        "healthy-9",
+        "healthy-12",
+        "healthy-15",
+        "healthy-18",
+        "healthy-21",
+        "healthy-24",
+        "healthy-27",
+        "healthy-30",
+        "healthy-33",
+        "healthy-36",
+        "healthy-39",
+        "healthy-42",
+        "healthy-45",
+        "healthy-48",
+        "healthy-51",
+        "healthy-54",
+        "healthy-57",
+        "healthy-60",
+        "healthy-63",
+        "healthy-66",
+        "healthy-69",
+        "healthy-72",
+        "healthy-75",
+        "healthy-78",
+        "healthy-81",
+        "healthy-84",
+        "healthy-86",
+        "healthy-87",
+        "healthy-90",
+        "healthy-93",
+        "healthy-96",
+        "healthy-99",
+        "healthy-102",
+        "healthy-105",
+        "healthy-108",
+        "healthy-111",
+        "healthy-114",
+        "healthy-117",
+        "healthy-120",
+        "healthy-123",
+        "healthy-126",
+        "healthy-129",
+        "healthy-132",
+        "healthy-135",
+        "healthy-138",
+        "healthy-141",
+        "healthy-144",
+        "healthy-147",
+        "healthy-150",
+        "healthy-153",
+        "healthy-156",
+        "healthy-159",
+        "healthy-162",
+        "healthy-165",
+        "healthy-168",
+        "healthy-171",
+        "healthy-174",
+        "healthy-177",
+        "healthy-180",
+        "healthy-183",
+        "healthy-186",
+        "healthy-189",
+        "healthy-192",
+        "healthy-195",
+        "healthy-198"
+      ]
+    },
+    {
+      "family": "above-tolerance",
+      "outcomes": [
+        {
+          "status": "eligible to advance",
+          "count": 0,
+          "total": 100,
+          "rate": 0,
+          "uncertainty95": {
+            "lower": 0,
+            "upper": 0.03621669264517642
+          }
+        },
+        {
+          "status": "regression detected",
+          "count": 86,
+          "total": 100,
+          "rate": 0.86,
+          "uncertainty95": {
+            "lower": 0.7762720186294321,
+            "upper": 0.9212945950730349
+          }
+        },
+        {
+          "status": "inconclusive",
+          "count": 14,
+          "total": 100,
+          "rate": 0.14,
+          "uncertainty95": {
+            "lower": 0.07870540492696512,
+            "upper": 0.22372798137056793
+          }
+        }
+      ],
+      "simpleThreshold": {
+        "eligible to advance": 0,
+        "regression detected": 100,
+        "inconclusive": 0
+      },
+      "changedDecisions": [
+        "regression-10",
+        "regression-31",
+        "regression-36",
+        "regression-37",
+        "regression-46",
+        "regression-57",
+        "regression-61",
+        "regression-69",
+        "regression-72",
+        "regression-76",
+        "regression-82",
+        "regression-85",
+        "regression-94",
+        "regression-100"
+      ]
+    },
+    {
+      "family": "boundary",
+      "outcomes": [
+        {
+          "status": "eligible to advance",
+          "count": 0,
+          "total": 60,
+          "rate": 0,
+          "uncertainty95": {
+            "lower": 0,
+            "upper": 0.05962949228616692
+          }
+        },
+        {
+          "status": "regression detected",
+          "count": 0,
+          "total": 60,
+          "rate": 0,
+          "uncertainty95": {
+            "lower": 0,
+            "upper": 0.05962949228616692
+          }
+        },
+        {
+          "status": "inconclusive",
+          "count": 60,
+          "total": 60,
+          "rate": 1,
+          "uncertainty95": {
+            "lower": 0.9403705077138331,
+            "upper": 1
+          }
+        }
+      ],
+      "simpleThreshold": {
+        "eligible to advance": 36,
+        "regression detected": 24,
+        "inconclusive": 0
+      },
+      "changedDecisions": [
+        "boundary-1",
+        "boundary-2",
+        "boundary-3",
+        "boundary-4",
+        "boundary-5",
+        "boundary-6",
+        "boundary-7",
+        "boundary-8",
+        "boundary-9",
+        "boundary-10",
+        "boundary-11",
+        "boundary-12",
+        "boundary-13",
+        "boundary-14",
+        "boundary-15",
+        "boundary-16",
+        "boundary-17",
+        "boundary-18",
+        "boundary-19",
+        "boundary-20",
+        "boundary-21",
+        "boundary-22",
+        "boundary-23",
+        "boundary-24",
+        "boundary-25",
+        "boundary-26",
+        "boundary-27",
+        "boundary-28",
+        "boundary-29",
+        "boundary-30",
+        "boundary-31",
+        "boundary-32",
+        "boundary-33",
+        "boundary-34",
+        "boundary-35",
+        "boundary-36",
+        "boundary-37",
+        "boundary-38",
+        "boundary-39",
+        "boundary-40",
+        "boundary-41",
+        "boundary-42",
+        "boundary-43",
+        "boundary-44",
+        "boundary-45",
+        "boundary-46",
+        "boundary-47",
+        "boundary-48",
+        "boundary-49",
+        "boundary-50",
+        "boundary-51",
+        "boundary-52",
+        "boundary-53",
+        "boundary-54",
+        "boundary-55",
+        "boundary-56",
+        "boundary-57",
+        "boundary-58",
+        "boundary-59",
+        "boundary-60"
+      ]
+    },
+    {
+      "family": "correlated-stress",
+      "outcomes": [
+        {
+          "status": "eligible to advance",
+          "count": 10,
+          "total": 40,
+          "rate": 0.25,
+          "uncertainty95": {
+            "lower": 0.12691479893284496,
+            "upper": 0.4119619801514298
+          }
+        },
+        {
+          "status": "regression detected",
+          "count": 0,
+          "total": 40,
+          "rate": 0,
+          "uncertainty95": {
+            "lower": 0,
+            "upper": 0.0880973028788024
+          }
+        },
+        {
+          "status": "inconclusive",
+          "count": 30,
+          "total": 40,
+          "rate": 0.75,
+          "uncertainty95": {
+            "lower": 0.5880380198485702,
+            "upper": 0.873085201067155
+          }
+        }
+      ],
+      "simpleThreshold": {
+        "eligible to advance": 39,
+        "regression detected": 0,
+        "inconclusive": 1
+      },
+      "changedDecisions": [
+        "correlated-4",
+        "correlated-5",
+        "correlated-6",
+        "correlated-7",
+        "correlated-8",
+        "correlated-9",
+        "correlated-10",
+        "correlated-11",
+        "correlated-12",
+        "correlated-14",
+        "correlated-15",
+        "correlated-16",
+        "correlated-17",
+        "correlated-18",
+        "correlated-19",
+        "correlated-21",
+        "correlated-22",
+        "correlated-24",
+        "correlated-25",
+        "correlated-26",
+        "correlated-27",
+        "correlated-30",
+        "correlated-31",
+        "correlated-32",
+        "correlated-33",
+        "correlated-34",
+        "correlated-35",
+        "correlated-38",
+        "correlated-40"
+      ]
+    }
+  ],
+  "gates": {
+    "falseRegression": true,
+    "largeEffectDetection": false,
+    "falseAdvancement": true
+  }
+}

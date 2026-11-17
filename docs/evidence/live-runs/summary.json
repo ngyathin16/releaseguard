@@ -1,0 +1,393 @@
+{
+  "capturedAt": "2026-11-17T06:21:47.778Z",
+  "policy": {
+    "version": "1",
+    "alpha": 0.05,
+    "cohorts": [
+      "desktop",
+      "mobile"
+    ],
+    "errorTolerance": 0.01,
+    "slowTolerance": 0.02,
+    "slowMs": 300,
+    "baselineErrorMax": 0.01,
+    "baselineSlowMax": 0.05,
+    "minimumPerCohort": 800,
+    "checkpoints": [
+      1600,
+      3200
+    ],
+    "stageTimeoutMs": 120000,
+    "telemetryGraceMs": 3000,
+    "leaseMs": 3000,
+    "maxCohortImbalance": 0.05,
+    "maxRateImbalance": 0.15
+  },
+  "source": "real independent HTTP service processes; synthetic seeded requests",
+  "incomplete": false,
+  "rows": [
+    {
+      "scenario": "healthy",
+      "seed": 101,
+      "stages": 3,
+      "state": "completed",
+      "judgment": "eligible to advance",
+      "samples": 42123,
+      "withdrawalMs": 206.26620000000185,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/healthy-101.json.gz"
+    },
+    {
+      "scenario": "healthy",
+      "seed": 202,
+      "stages": 3,
+      "state": "completed",
+      "judgment": "eligible to advance",
+      "samples": 42123,
+      "withdrawalMs": 205.46579999999813,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/healthy-202.json.gz"
+    },
+    {
+      "scenario": "healthy",
+      "seed": 303,
+      "stages": 3,
+      "state": "completed",
+      "judgment": "eligible to advance",
+      "samples": 42123,
+      "withdrawalMs": 211.74580000000424,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/healthy-303.json.gz"
+    },
+    {
+      "scenario": "broad-latency",
+      "seed": 101,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "regression detected",
+      "samples": 32403,
+      "withdrawalMs": 168.28059999999823,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/broad-latency-101.json.gz"
+    },
+    {
+      "scenario": "broad-latency",
+      "seed": 202,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "regression detected",
+      "samples": 32403,
+      "withdrawalMs": 166.2970000000205,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/broad-latency-202.json.gz"
+    },
+    {
+      "scenario": "broad-latency",
+      "seed": 303,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "regression detected",
+      "samples": 32403,
+      "withdrawalMs": 163.3984000000055,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/broad-latency-303.json.gz"
+    },
+    {
+      "scenario": "tail-latency",
+      "seed": 101,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "regression detected",
+      "samples": 32403,
+      "withdrawalMs": 169.53110000002198,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/tail-latency-101.json.gz"
+    },
+    {
+      "scenario": "tail-latency",
+      "seed": 202,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "regression detected",
+      "samples": 32403,
+      "withdrawalMs": 159.51910000000498,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/tail-latency-202.json.gz"
+    },
+    {
+      "scenario": "tail-latency",
+      "seed": 303,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "regression detected",
+      "samples": 32403,
+      "withdrawalMs": 169.5451999999932,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/tail-latency-303.json.gz"
+    },
+    {
+      "scenario": "cohort-regression",
+      "seed": 101,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "regression detected",
+      "samples": 32403,
+      "withdrawalMs": 164.0180999999866,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/cohort-regression-101.json.gz"
+    },
+    {
+      "scenario": "cohort-regression",
+      "seed": 202,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "regression detected",
+      "samples": 32403,
+      "withdrawalMs": 167.68369999999413,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/cohort-regression-202.json.gz"
+    },
+    {
+      "scenario": "cohort-regression",
+      "seed": 303,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "regression detected",
+      "samples": 32403,
+      "withdrawalMs": 172.27860000001965,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/cohort-regression-303.json.gz"
+    },
+    {
+      "scenario": "configuration-errors",
+      "seed": 101,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "regression detected",
+      "samples": 32403,
+      "withdrawalMs": 165.43909999995958,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/configuration-errors-101.json.gz"
+    },
+    {
+      "scenario": "configuration-errors",
+      "seed": 202,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "regression detected",
+      "samples": 32403,
+      "withdrawalMs": 194.1770999999717,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/configuration-errors-202.json.gz"
+    },
+    {
+      "scenario": "configuration-errors",
+      "seed": 303,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "regression detected",
+      "samples": 32403,
+      "withdrawalMs": 158.17879999999423,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/configuration-errors-303.json.gz"
+    },
+    {
+      "scenario": "insufficient-traffic",
+      "seed": 101,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 803,
+      "withdrawalMs": 8.248499999986961,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/insufficient-traffic-101.json.gz"
+    },
+    {
+      "scenario": "insufficient-traffic",
+      "seed": 202,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 803,
+      "withdrawalMs": 8.68949999997858,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/insufficient-traffic-202.json.gz"
+    },
+    {
+      "scenario": "insufficient-traffic",
+      "seed": 303,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 803,
+      "withdrawalMs": 8.122600000002421,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/insufficient-traffic-303.json.gz"
+    },
+    {
+      "scenario": "missing-metrics",
+      "seed": 101,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 803,
+      "withdrawalMs": 7.725199999986216,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/missing-metrics-101.json.gz"
+    },
+    {
+      "scenario": "missing-metrics",
+      "seed": 202,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 803,
+      "withdrawalMs": 8.509900000004563,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/missing-metrics-202.json.gz"
+    },
+    {
+      "scenario": "missing-metrics",
+      "seed": 303,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 803,
+      "withdrawalMs": 8.452599999960512,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/missing-metrics-303.json.gz"
+    },
+    {
+      "scenario": "unbalanced-workload",
+      "seed": 101,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 64403,
+      "withdrawalMs": 311.4435999999987,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/unbalanced-workload-101.json.gz"
+    },
+    {
+      "scenario": "unbalanced-workload",
+      "seed": 202,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 64403,
+      "withdrawalMs": 303.05790000001434,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/unbalanced-workload-202.json.gz"
+    },
+    {
+      "scenario": "unbalanced-workload",
+      "seed": 303,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 64403,
+      "withdrawalMs": 306.60249999997905,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/unbalanced-workload-303.json.gz"
+    },
+    {
+      "scenario": "unhealthy-baseline",
+      "seed": 101,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 64403,
+      "withdrawalMs": 301.8310000000056,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/unhealthy-baseline-101.json.gz"
+    },
+    {
+      "scenario": "unhealthy-baseline",
+      "seed": 202,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 64403,
+      "withdrawalMs": 305.85230000002775,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/unhealthy-baseline-202.json.gz"
+    },
+    {
+      "scenario": "unhealthy-baseline",
+      "seed": 303,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 64403,
+      "withdrawalMs": 329.4614999999758,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/unhealthy-baseline-303.json.gz"
+    },
+    {
+      "scenario": "candidate-crash",
+      "seed": 101,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 803,
+      "withdrawalMs": 7.510400000028312,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/candidate-crash-101.json.gz"
+    },
+    {
+      "scenario": "candidate-crash",
+      "seed": 202,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 803,
+      "withdrawalMs": 5.995699999970384,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/candidate-crash-202.json.gz"
+    },
+    {
+      "scenario": "candidate-crash",
+      "seed": 303,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 803,
+      "withdrawalMs": 5.982700000051409,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/candidate-crash-303.json.gz"
+    },
+    {
+      "scenario": "lease-expiry",
+      "seed": 101,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 19719,
+      "withdrawalMs": 155.62329999997746,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/lease-expiry-101.json.gz"
+    },
+    {
+      "scenario": "lease-expiry",
+      "seed": 202,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 19336,
+      "withdrawalMs": 156.38429999991786,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/lease-expiry-202.json.gz"
+    },
+    {
+      "scenario": "lease-expiry",
+      "seed": 303,
+      "stages": 1,
+      "state": "rolled back",
+      "judgment": "inconclusive",
+      "samples": 19697,
+      "withdrawalMs": 151.8405999999959,
+      "replayMatched": true,
+      "evidence": "docs/evidence/live-runs/lease-expiry-303.json.gz"
+    }
+  ]
+}

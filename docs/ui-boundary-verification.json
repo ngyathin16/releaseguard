@@ -1,0 +1,15 @@
+{
+  "capturedAt": "2026-11-17T06:29:49.221Z",
+  "base": "http://127.0.0.1:4320",
+  "checks": [
+    "Empty policy survives polling; malformed JSON/schema cannot dispatch a start",
+    "Policy summary previews valid edits; an empty seed is rejected instead of becoming zero",
+    "Custom policy freezes in the real run; live measured counts are exposed without editing that policy",
+    "A real eligible run that is manually stopped is shown as withdrawn, with advancement disabled",
+    "Intercepted stopping/unresolved-control states never claim confirmed zero exposure",
+    "Connection loss locks advancement; successful reconnection clears its stale error",
+    "Saved stopped eligible evidence cannot advertise that the stopped run can advance"
+  ],
+  "passed": true,
+  "scope": "Real server for policy validation/start/stop; explicitly intercepted state responses for uncertain control, disconnect and historical-state UI boundaries."
+}

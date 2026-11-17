@@ -1,0 +1,35 @@
+{
+  "name": "releaseguard",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24.14 <25" },
+  "scripts": {
+    "start": "node src/server.ts",
+    "dev": "vite --host 127.0.0.1",
+    "check": "tsc --noEmit",
+    "build": "npm run check && vite build",
+    "test": "node --test test/*.test.ts",
+    "verify:browser": "node scripts/verify-browser.mjs",
+    "verify:ui-boundaries": "node scripts/verify-ui-boundaries.mjs",
+    "verify:runtime": "node scripts/verify-runtime.ts",
+    "evaluate": "node evaluation/run.ts",
+    "verify:recording": "node evaluation/verify-recording.ts",
+    "reanalyze": "node evaluation/reanalyze.ts",
+    "walkthrough": "node scripts/capture-walkthrough.mjs"
+  },
+  "dependencies": {
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@types/node": "24.10.0",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "playwright": "1.65.0",
+    "typescript": "6.0.3",
+    "vite": "8.3.8"
+  }
+}

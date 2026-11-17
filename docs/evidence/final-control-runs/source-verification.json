@@ -1,0 +1,10 @@
+{
+  "capturedAt": "2026-11-17T06:28:00.797Z",
+  "files": 12,
+  "sourceHashesVerified": 84,
+  "rows": 12,
+  "maxWithdrawalMs": 164.5645000000004,
+  "requests": 63712,
+  "violations": [],
+  "reanalysis": "All judgments deep-equal replayed inside verify-runtime.ts."
+}

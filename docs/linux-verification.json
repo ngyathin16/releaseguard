@@ -1,0 +1,58 @@
+{
+  "recordedAt": "2026-11-17T06:25:51.932Z",
+  "status": "blocked by unresponsive WSL guest before build/tests",
+  "environment": {
+    "distro": "Ubuntu",
+    "kernel": "6.6.87.2-microsoft-standard-WSL2",
+    "node": "24.14.0",
+    "npm": "11.9.0",
+    "location": "clean source copy on D with fresh Linux dependencies, not a git clone"
+  },
+  "successfulSteps": [
+    {
+      "command": "sha256sum --ignore-missing --check SHASUMS256.txt",
+      "result": "Official Node24.14.0 linux-x64 archive checksum matched"
+    },
+    {
+      "command": "npm ci",
+      "result": "32 packages installed, 0 audit findings; all dependencies freshly installed on Linux"
+    }
+  ],
+  "interruptions": [
+    {
+      "attempt": "npm run check && npm run build && npm test",
+      "result": "WSL invocation became unresponsive before node --version or any build/test output"
+    },
+    {
+      "attempt": "wsl -d Ubuntu --exec /bin/echo alive",
+      "result": "Also unresponsive; not an application test failure"
+    },
+    {
+      "attempt": "wsl --terminate Ubuntu",
+      "result": "Targeted recovery also remained unresponsive. With parent instruction to stop recovery, only the six Windows wsl.exe client processes belonging to these three attempted commands were terminated. No Docker distribution or WSL service was stopped."
+    }
+  ],
+  "sourceHashes": {
+    "src/analysis.ts": "aadab7f4627775a204126a06e754485bf4bb3b0daea49f2f8f2a55c64abd189a",
+    "src/domain.ts": "6c5f00aff321461747e079e6bea73cd0d3c65d257d46297afa959677f339d690",
+    "src/router.ts": "7ce2bf042683e2312498b085bdc1bcb857dfe64687a53a19f9260da4a1478682",
+    "src/runtime.ts": "a330ce037f294c879d4bc69129f55168ab5787b0d71b04d39feb9dfa22e0fa45",
+    "src/server.ts": "7e3342e9ca4c975ec79c2e4f632382bb1f1091c3ac0be7fc24a58224258d04f7",
+    "src/service.ts": "fd1f1afcc8161eb7914044023e7acbabe8e19bd35e7572d0cdfc7a1192b5066c",
+    "src/store.ts": "b8cdd183ea2d69debe361b0aa8abc2af4395070506c9cfa4780b24ead1c04a45",
+    "test/analysis.test.ts": "9d42400454d8acf828abae918fe7c9f1258192efe9995301bc66ee45c95802a7",
+    "test/runtime-races.test.ts": "1c1ea5197f4a4fae12cc215eaa8a1833d2b7dcef0b395fc7003b5a2cf6ed17d2",
+    "test/runtime.test.ts": "225a3c232dea5ca966523f4caaea933a21422b31c1294d0ed0625912efb3a765",
+    "test/server.test.ts": "ba95a400b72cd2fb81d1ac40f3c7de5bbdeb87b8a69c2f8f17c26eea284304de",
+    "ui/env.d.ts": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5",
+    "ui/fonts.css": "461912badd362efcc3b6c3f26abac7ffa970023105d04e1a47b9988193627ad5",
+    "ui/index.html": "41c66232594505473f587841dd9b44116abe40395a32d087d493f6d8eefdb066",
+    "ui/main.tsx": "feb374a2818b930c9d1280311b29e0526a604b87a3dd93771a5ed6c357f73319",
+    "ui/style.css": "af6e5c3253b8310c02167e99260db4b9e421c70bdb0a5bcf20242283856f7b7e",
+    "package.json": "93ca00094343d0f70b7b93b620680749007d9aad3bf9686bfd9fd50b2eecee96",
+    "package-lock.json": "7f3c7ff421ec51d841ccc858ce69590c281d8cd393ecf5a2a07104a44ed4f854",
+    "tsconfig.json": "8993b4a26ff519aee59c57a22a4ae0471e2b4fe5f5696fdfc45c3aa3ade83fb7",
+    "vite.config.ts": "e930401ed5f45592018644a480938624a28add89db529ff12cb9b93cf5451eaa"
+  },
+  "followup": "Clean Ubuntu verification is delegated to the GitHub Actions matrix after source publication; this local record is not a Linux pass."
+}

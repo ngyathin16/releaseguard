@@ -1,0 +1,29 @@
+WEBVTT
+
+1
+00:00:00.639 --> 00:00:07.040
+ReleaseGuard runs a real local experiment: a router, a stable service, a fresh baseline, and a candidate. All traffic is synthetic.
+
+2
+00:00:07.040 --> 00:00:20.035
+Policy is frozen before traffic starts. The first stage sends 5% to each comparison arm, with 90% going to the stable service.
+
+3
+00:00:20.035 --> 00:00:31.884
+Healthy is earned: every cohort needs enough evidence, a healthy baseline, and an upper degradation bound within tolerance. Advancement is explicit.
+
+4
+00:00:31.884 --> 00:00:41.044
+Stopping is checked against the real router. Subsequent requests must return the baseline version before withdrawal is recorded as confirmed.
+
+5
+00:00:41.044 --> 00:00:53.035
+Now lose the candidate telemetry. Missing measurements must not become zero errors or zero latency.
+
+6
+00:00:53.035 --> 00:01:04.010
+The run is inconclusive. Advancement stays locked, and candidate traffic is withdrawn after the frozen grace period. This is not a statistical regression claim.
+
+7
+00:01:04.010 --> 00:01:15.004
+Export includes the policy, raw requests, judgments, and control events. Reanalyze the saved inputs to reproduce the same decision.

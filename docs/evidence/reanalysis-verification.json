@@ -1,0 +1,498 @@
+{
+  "verifiedAt": "2026-11-17T06:24:32.094Z",
+  "mode": "independent CLI replay of exported captures",
+  "results": [
+    {
+      "file": "broad-latency-101.json.gz",
+      "run": "0da24357-6f21-4658-8b2e-34dcba0de823",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "regression detected",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "broad-latency-202.json.gz",
+      "run": "d56fb412-50b3-4d3d-a4ed-daeca30eb1c8",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "regression detected",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "broad-latency-303.json.gz",
+      "run": "c05d8925-4c71-4960-b9b3-0341bc043d8b",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "regression detected",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "candidate-crash-101.json.gz",
+      "run": "c9e3d731-6e20-4565-901d-5ae698d962c5",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "inconclusive",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "candidate-crash-202.json.gz",
+      "run": "0597fc00-2b16-4853-8713-3976462741e1",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "inconclusive",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "candidate-crash-303.json.gz",
+      "run": "dca95ec9-59dc-418f-9eed-178204a14691",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "inconclusive",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "cohort-regression-101.json.gz",
+      "run": "6d26dfe6-4314-4589-9315-ddbd90d9a44a",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "regression detected",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "cohort-regression-202.json.gz",
+      "run": "383f5d48-3603-4308-af29-cdabe7dc6cc3",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "regression detected",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "cohort-regression-303.json.gz",
+      "run": "573f6ac5-fd67-4638-99f9-64c391133d1a",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "regression detected",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "configuration-errors-101.json.gz",
+      "run": "2850d675-8430-4233-8a48-8a26b13889ec",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "regression detected",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "configuration-errors-202.json.gz",
+      "run": "edbc7edf-8ac6-4da4-a1d9-6a49589739a3",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "regression detected",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "configuration-errors-303.json.gz",
+      "run": "fa82111b-cb85-4992-87c1-66b901dafff8",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "regression detected",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "healthy-101.json.gz",
+      "run": "7a645ff4-fdaa-4a67-a23b-fcc85fde53b9",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 3,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "eligible to advance",
+          "checkpoint": 1600
+        },
+        {
+          "stage": 1,
+          "status": "eligible to advance",
+          "checkpoint": 1600
+        },
+        {
+          "stage": 2,
+          "status": "eligible to advance",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "healthy-202.json.gz",
+      "run": "151c8eba-1f98-4bf2-8d2a-2d0e155b24cb",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 3,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "eligible to advance",
+          "checkpoint": 1600
+        },
+        {
+          "stage": 1,
+          "status": "eligible to advance",
+          "checkpoint": 1600
+        },
+        {
+          "stage": 2,
+          "status": "eligible to advance",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "healthy-303.json.gz",
+      "run": "290cbf37-d7d9-4ca2-99b3-dbc13f3fce31",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 3,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "eligible to advance",
+          "checkpoint": 1600
+        },
+        {
+          "stage": 1,
+          "status": "eligible to advance",
+          "checkpoint": 1600
+        },
+        {
+          "stage": 2,
+          "status": "eligible to advance",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "insufficient-traffic-101.json.gz",
+      "run": "2a601c4c-452d-4504-8607-089545e03b58",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "inconclusive",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "insufficient-traffic-202.json.gz",
+      "run": "362424ff-d121-421d-917b-73731e2f08fa",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "inconclusive",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "insufficient-traffic-303.json.gz",
+      "run": "040c9610-d45b-407a-9cc2-192d848474ff",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "inconclusive",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "lease-expiry-101.json.gz",
+      "run": "d8b3837b-c3db-4381-b517-fd892d872133",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "inconclusive",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "lease-expiry-202.json.gz",
+      "run": "d72bf0f6-6448-418c-8790-92f1c85c38ae",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "inconclusive",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "lease-expiry-303.json.gz",
+      "run": "4c23b1c7-138d-4a17-8dd7-9e02894263da",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "inconclusive",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "missing-metrics-101.json.gz",
+      "run": "cc53ab37-8ab7-41f3-85ca-aea2ea3eeda0",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "inconclusive",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "missing-metrics-202.json.gz",
+      "run": "58a05db0-5ccc-4c5d-9e87-3b37f8d7dbf7",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "inconclusive",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "missing-metrics-303.json.gz",
+      "run": "14e336af-7cbf-4027-8316-755dd2b0cb48",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "inconclusive",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "tail-latency-101.json.gz",
+      "run": "d5b38335-7606-4b9a-bac1-7bad3693935e",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "regression detected",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "tail-latency-202.json.gz",
+      "run": "2a6a8ba5-0744-466f-a55a-a5d0acc7dd55",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "regression detected",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "tail-latency-303.json.gz",
+      "run": "e758f47f-f7d2-4b95-9f33-78489a297650",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "regression detected",
+          "checkpoint": 1600
+        }
+      ]
+    },
+    {
+      "file": "unbalanced-workload-101.json.gz",
+      "run": "37f3f30a-7794-4edb-b5f3-6e2bf008a5c1",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "inconclusive",
+          "checkpoint": 3200
+        }
+      ]
+    },
+    {
+      "file": "unbalanced-workload-202.json.gz",
+      "run": "f206546a-04d8-434c-b8d6-a58a43fbc38f",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "inconclusive",
+          "checkpoint": 3200
+        }
+      ]
+    },
+    {
+      "file": "unbalanced-workload-303.json.gz",
+      "run": "5ac49b1b-db33-4645-9cb1-c46316e6e378",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "inconclusive",
+          "checkpoint": 3200
+        }
+      ]
+    },
+    {
+      "file": "unhealthy-baseline-101.json.gz",
+      "run": "24569618-ef38-42fe-b4de-d709b7a09c7e",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "inconclusive",
+          "checkpoint": 3200
+        }
+      ]
+    },
+    {
+      "file": "unhealthy-baseline-202.json.gz",
+      "run": "4dd92d31-0a8a-4e16-bb17-807a1e47bff2",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "inconclusive",
+          "checkpoint": 3200
+        }
+      ]
+    },
+    {
+      "file": "unhealthy-baseline-303.json.gz",
+      "run": "9d121754-2e70-4cb4-a4ec-f2be8573e98f",
+      "analysisVersion": "clopper-pearson-bonferroni-v2",
+      "exactMatch": true,
+      "retainedCheckpoints": 1,
+      "checks": [
+        {
+          "stage": 0,
+          "status": "inconclusive",
+          "checkpoint": 3200
+        }
+      ]
+    }
+  ]
+}

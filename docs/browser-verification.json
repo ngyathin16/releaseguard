@@ -1,0 +1,83 @@
+{
+  "capturedAt": "2026-11-17T06:30:05.214Z",
+  "browser": "157.0.4341.60",
+  "platform": "win32",
+  "checks": [
+    "Keyboard skip link focuses workbench",
+    "initial: three responsive views, no page overflow or automated WCAG-tagged findings",
+    "Policy disclosure exposes frozen sample and health requirements",
+    "Real healthy 5% stage reaches eligible decision",
+    "eligible: three responsive views, no page overflow or automated WCAG-tagged findings",
+    "Reload preserves active run and explicit advancement",
+    "Explicit 25% and 50% advancement completes all stages",
+    "Export includes real request evidence and observed withdrawal",
+    "completed: three responsive views, no page overflow or automated WCAG-tagged findings",
+    "Missing telemetry holds advancement and confirms withdrawal",
+    "inconclusive: three responsive views, no page overflow or automated WCAG-tagged findings",
+    "Manual stop is functional and independently observed"
+  ],
+  "views": [
+    {
+      "name": "initial",
+      "width": 360,
+      "violations": []
+    },
+    {
+      "name": "initial",
+      "width": 768,
+      "violations": []
+    },
+    {
+      "name": "initial",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "name": "eligible",
+      "width": 360,
+      "violations": []
+    },
+    {
+      "name": "eligible",
+      "width": 768,
+      "violations": []
+    },
+    {
+      "name": "eligible",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "name": "completed",
+      "width": 360,
+      "violations": []
+    },
+    {
+      "name": "completed",
+      "width": 768,
+      "violations": []
+    },
+    {
+      "name": "completed",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "name": "inconclusive",
+      "width": 360,
+      "violations": []
+    },
+    {
+      "name": "inconclusive",
+      "width": 768,
+      "violations": []
+    },
+    {
+      "name": "inconclusive",
+      "width": 1440,
+      "violations": []
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

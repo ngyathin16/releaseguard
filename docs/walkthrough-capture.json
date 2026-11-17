@@ -1,0 +1,41 @@
+{
+  "capturedAt": "2026-11-17T06:17:07.805Z",
+  "mode": "live local HTTP application, caption overlay only",
+  "browser": "157.0.4341.60",
+  "durationSeconds": 75.00473950000001,
+  "captions": [
+    {
+      "start": 0.6394924000000001,
+      "text": "ReleaseGuard runs a real local experiment: a router, a stable service, a fresh baseline, and a candidate. All traffic is synthetic."
+    },
+    {
+      "start": 7.040511599999999,
+      "text": "Policy is frozen before traffic starts. The first stage sends 5% to each comparison arm, with 90% going to the stable service."
+    },
+    {
+      "start": 20.0351161,
+      "text": "Healthy is earned: every cohort needs enough evidence, a healthy baseline, and an upper degradation bound within tolerance. Advancement is explicit."
+    },
+    {
+      "start": 31.884991600000003,
+      "text": "Stopping is checked against the real router. Subsequent requests must return the baseline version before withdrawal is recorded as confirmed."
+    },
+    {
+      "start": 41.044975,
+      "text": "Now lose the candidate telemetry. Missing measurements must not become zero errors or zero latency."
+    },
+    {
+      "start": 53.035365,
+      "text": "The run is inconclusive. Advancement stays locked, and candidate traffic is withdrawn after the frozen grace period. This is not a statistical regression claim."
+    },
+    {
+      "start": 64.0102181,
+      "text": "Export includes the policy, raw requests, judgments, and control events. Reanalyze the saved inputs to reproduce the same decision."
+    }
+  ],
+  "media": {
+    "duration": 85.68,
+    "width": 1440,
+    "height": 1000
+  }
+}
