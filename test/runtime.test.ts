@@ -10,9 +10,9 @@ import { analyze } from '../src/analysis.ts';
 mkdirSync('data/tests', { recursive: true });
 const policy = { ...DEFAULT_POLICY, baselineErrorMax: 0.1, baselineSlowMax: 0.2, errorTolerance: 0.2, slowTolerance: 0.3, minimumPerCohort: 100, checkpoints: [200], stageTimeoutMs: 10000, telemetryGraceMs: 100, leaseMs: 500 };
 const pause = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-async function finish(runtime: Runtime, timeout = 30000) {
+async function finish(runtime: Runtime, { waitForWithdrawal = false, timeout = 30000 } = {}) {
   const start = Date.now();
-  while (runtime.active && ['running', 'stopping', 'prepared'].includes(runtime.active.state)) {
+  while (runtime.active && (['running', 'stopping', 'prepared'].includes(runtime.active.state) || (waitForWithdrawal && runtime.active.state === 'held'))) {
     if (Date.now() - start > timeout) throw new Error('Run did not finish');
     await pause(50);
   }
@@ -46,8 +46,10 @@ for (const scenario of ['missing-metrics', 'insufficient-traffic', 'unbalanced-w
     const runtime = make(); await runtime.init();
     try {
       await runtime.create(scenario, 17, { ...policy, stageTimeoutMs: scenario === 'insufficient-traffic' ? 1000 : 10000 });
-      const run = await finish(runtime);
-      assert.equal(run.state, 'rolled back'); assert.notEqual(run.decision?.status, 'eligible to advance');
+      const run = await finish(runtime, { waitForWithdrawal: scenario === 'lease-expiry' });
+      assert.equal(run.state, 'rolled back');
+      if (scenario === 'lease-expiry') assert.ok(run.events.some(event => event.type === 'stop requested' && event.message.includes('lease expired')));
+      else assert.notEqual(run.decision?.status, 'eligible to advance');
       assert.ok(run.rollback); assert.ok(run.rollback.elapsedMs < 2000);
       const generation = run.generation; await runtime.stop(); assert.equal(run.generation, generation);
       await assert.rejects(runtime.advance(run.id, generation), /Advance requires/);
@@ -57,6 +59,23 @@ for (const scenario of ['missing-metrics', 'insufficient-traffic', 'unbalanced-w
     } finally { await runtime.close(); }
   });
 }
+
+test('lease expiry blocks an eligible stage while preserving its earlier judgment', { timeout: 15000 }, async () => {
+  const runtime = make(); await runtime.init();
+  try {
+    await runtime.create('healthy', 83, policy); const run = await finish(runtime);
+    assert.equal(run.state, 'held'); assert.equal(run.decision?.status, 'eligible to advance');
+    const historicalJudgment = structuredClone(run.decision); const generation = run.generation;
+    await runtime.stopHeartbeat();
+    const beforeExpiry = await runtime.observed();
+    await pause((beforeExpiry.leaseRemainingMs ?? 0) + 50);
+    await runtime.heartbeat();
+    assert.equal(run.state, 'rolled back'); assert.ok(run.rollback);
+    assert.deepEqual(run.decision, historicalJudgment);
+    assert.equal((await runtime.observed()).enabled, false);
+    await assert.rejects(runtime.advance(run.id, generation), /Advance requires/);
+  } finally { await runtime.close(); }
+});
 
 test('restart reconciles a surviving router and confirms baseline request versions', { timeout: 30000 }, async () => {
   const runtime = make(); await runtime.init();
