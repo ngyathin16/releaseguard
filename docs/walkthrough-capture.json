@@ -1,41 +1,52 @@
 {
-  "capturedAt": "2026-11-17T06:17:07.805Z",
-  "mode": "live local HTTP application, caption overlay only",
+  "capturedAt": "2026-11-17T06:35:11.451Z",
+  "mode": "Recorded live local HTTP application; caption overlay only, no simulated responses",
+  "base": "http://127.0.0.1:4320",
   "browser": "157.0.4341.60",
-  "durationSeconds": 75.00473950000001,
+  "platform": "win32",
+  "sourceCommit": "87b4ef1368b872fe60f771712e3d70288d0877bc",
+  "sourceSha256": {
+    "ui/main.tsx": "d0ac3f880c45f750a98802a31c0c87894480274c7412bae9b91d2710d55cacfe",
+    "ui/style.css": "3ef94efff40dfdfa2476f2aed83b0d4232248637833a2fadfb30dbf7cc2085d6",
+    "src/runtime.ts": "87b99949f5de150530be12d31983326392a28e6aad7060470d7f9c61017e0c33",
+    "src/analysis.ts": "aadab7f4627775a204126a06e754485bf4bb3b0daea49f2f8f2a55c64abd189a",
+    "scripts/capture-walkthrough.mjs": "011ebdab56902ad8399f09f085c8485e61e0af7c99e1fb36df868dbceb1a9801"
+  },
+  "durationSeconds": 79.72,
+  "workflowWallSeconds": 72.0158125,
+  "media": {
+    "duration": 79.72,
+    "width": 1440,
+    "height": 1000
+  },
   "captions": [
     {
-      "start": 0.6394924000000001,
+      "start": 0.3039293,
       "text": "ReleaseGuard runs a real local experiment: a router, a stable service, a fresh baseline, and a candidate. All traffic is synthetic."
     },
     {
-      "start": 7.040511599999999,
+      "start": 7.055693099999999,
       "text": "Policy is frozen before traffic starts. The first stage sends 5% to each comparison arm, with 90% going to the stable service."
     },
     {
-      "start": 20.0351161,
+      "start": 20.050968400000002,
       "text": "Healthy is earned: every cohort needs enough evidence, a healthy baseline, and an upper degradation bound within tolerance. Advancement is explicit."
     },
     {
-      "start": 31.884991600000003,
+      "start": 31.8835939,
       "text": "Stopping is checked against the real router. Subsequent requests must return the baseline version before withdrawal is recorded as confirmed."
     },
     {
-      "start": 41.044975,
+      "start": 41.0397211,
       "text": "Now lose the candidate telemetry. Missing measurements must not become zero errors or zero latency."
     },
     {
-      "start": 53.035365,
+      "start": 53.0335872,
       "text": "The run is inconclusive. Advancement stays locked, and candidate traffic is withdrawn after the frozen grace period. This is not a statistical regression claim."
     },
     {
-      "start": 64.0102181,
+      "start": 64.0073443,
       "text": "Export includes the policy, raw requests, judgments, and control events. Reanalyze the saved inputs to reproduce the same decision."
     }
-  ],
-  "media": {
-    "duration": 85.68,
-    "width": 1440,
-    "height": 1000
-  }
+  ]
 }

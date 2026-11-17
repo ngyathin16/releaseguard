@@ -1,0 +1,221 @@
+﻿2026-11-17T06:42:07.9458076Z Current runner version: '2.338.2'
+2026-11-17T06:42:07.9490564Z ##[group]Runner Image Provisioner
+2026-11-17T06:42:07.9491472Z Hosted Compute Agent
+2026-11-17T06:42:07.9492007Z Version: 20261103.629
+2026-11-17T06:42:07.9492577Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+2026-11-17T06:42:07.9493276Z Build Date: 2026-11-03T17:26:59Z
+2026-11-17T06:42:07.9493927Z Worker ID: {3660e3d2-74d3-46d4-aa66-2b091036a91a}
+2026-11-17T06:42:07.9494850Z Region: westus3
+2026-11-17T06:42:07.9495352Z Cloud: Azure
+2026-11-17T06:42:07.9495825Z ##[endgroup]
+2026-11-17T06:42:07.9497242Z ##[group]Operating System
+2026-11-17T06:42:07.9497822Z Microsoft Windows Server 2025
+2026-11-17T06:42:07.9498373Z 10.0.26100
+2026-11-17T06:42:07.9498844Z Datacenter
+2026-11-17T06:42:07.9499418Z ##[endgroup]
+2026-11-17T06:42:07.9499976Z ##[group]Runner Image
+2026-11-17T06:42:07.9500507Z Image: windows-2025-vs2026
+2026-11-17T06:42:07.9501044Z Version: 20261103.298.1
+2026-11-17T06:42:07.9502593Z Included Software: https://github.com/actions/runner-images/blob/win25-vs2026/20261103.298/images/windows/Windows2025-VS2026-Readme.md
+2026-11-17T06:42:07.9504152Z Image Release: https://github.com/actions/runner-images/releases/tag/win25-vs2026%2F20261103.298
+2026-11-17T06:42:07.9505056Z ##[endgroup]
+2026-11-17T06:42:07.9506756Z ##[group]GITHUB_TOKEN Permissions
+2026-11-17T06:42:07.9509119Z Contents: read
+2026-11-17T06:42:07.9509938Z Metadata: read
+2026-11-17T06:42:07.9510492Z ##[endgroup]
+2026-11-17T06:42:07.9512817Z Secret source: Actions
+2026-11-17T06:42:07.9513757Z Cache mode: write
+2026-11-17T06:42:07.9514633Z Prepare workflow directory
+2026-11-17T06:42:07.9930414Z Prepare all required actions
+2026-11-17T06:42:07.9992606Z Getting action download info
+2026-11-17T06:42:08.2984669Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-17T06:42:08.4333995Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-11-17T06:42:08.7072310Z Complete job name: check (windows-latest)
+2026-11-17T06:42:08.9036042Z ##[group]Run actions/checkout@v4
+2026-11-17T06:42:08.9038932Z with:
+2026-11-17T06:42:08.9039491Z   repository: ngyathin16/releaseguard
+2026-11-17T06:42:08.9043860Z   token: ***
+2026-11-17T06:42:08.9044322Z   ssh-strict: true
+2026-11-17T06:42:08.9044772Z   ssh-user: git
+2026-11-17T06:42:08.9045273Z   persist-credentials: true
+2026-11-17T06:42:08.9045818Z   clean: true
+2026-11-17T06:42:08.9046299Z   sparse-checkout-cone-mode: true
+2026-11-17T06:42:08.9046832Z   fetch-depth: 1
+2026-11-17T06:42:08.9047266Z   fetch-tags: false
+2026-11-17T06:42:08.9047744Z   show-progress: true
+2026-11-17T06:42:08.9048207Z   lfs: false
+2026-11-17T06:42:08.9048639Z   submodules: false
+2026-11-17T06:42:08.9049125Z   set-safe-directory: true
+2026-11-17T06:42:08.9049656Z   allow-unsafe-pr-checkout: false
+2026-11-17T06:42:08.9050612Z ##[endgroup]
+2026-11-17T06:42:09.0897229Z Syncing repository: ngyathin16/releaseguard
+2026-11-17T06:42:09.0899117Z ##[group]Getting Git version info
+2026-11-17T06:42:09.0899766Z Working directory is 'D:\a\releaseguard\releaseguard'
+2026-11-17T06:42:09.1733094Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-11-17T06:42:09.5486247Z git version 2.56.0.windows.4
+2026-11-17T06:42:09.5497104Z ##[endgroup]
+2026-11-17T06:42:09.5518535Z Temporarily overriding HOME='D:\a\_temp\d0c9c0b9-7644-405e-bccd-62483717fc17' before making global git config changes
+2026-11-17T06:42:09.5520036Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-17T06:42:09.5529219Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\releaseguard\releaseguard
+2026-11-17T06:42:09.6248887Z Deleting the contents of 'D:\a\releaseguard\releaseguard'
+2026-11-17T06:42:09.6255087Z ##[group]Initializing the repository
+2026-11-17T06:42:09.6264161Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\releaseguard\releaseguard
+2026-11-17T06:42:09.7144367Z Initialized empty Git repository in D:/a/releaseguard/releaseguard/.git/
+2026-11-17T06:42:09.7200651Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/ngyathin16/releaseguard
+2026-11-17T06:42:09.8000484Z ##[endgroup]
+2026-11-17T06:42:09.8002070Z ##[group]Disabling automatic garbage collection
+2026-11-17T06:42:09.8009692Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2026-11-17T06:42:09.8430436Z ##[endgroup]
+2026-11-17T06:42:09.8431940Z ##[group]Setting up auth
+2026-11-17T06:42:09.8443072Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-11-17T06:42:09.8862901Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-11-17T06:42:11.5014354Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-17T06:42:11.5586120Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-11-17T06:42:12.1746557Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-17T06:42:12.2174409Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-11-17T06:42:12.8921022Z [command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-11-17T06:42:12.9399523Z ##[endgroup]
+2026-11-17T06:42:12.9415544Z ##[group]Fetching the repository
+2026-11-17T06:42:12.9421067Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +df6010be983bd4b3c1fc6e570864c54487c3c5a6:refs/remotes/origin/main
+2026-11-17T06:42:18.2431138Z From https://github.com/ngyathin16/releaseguard
+2026-11-17T06:42:18.2431777Z  * [new ref]         df6010be983bd4b3c1fc6e570864c54487c3c5a6 -> origin/main
+2026-11-17T06:42:18.2492561Z ##[endgroup]
+2026-11-17T06:42:18.2493035Z ##[group]Determining the checkout info
+2026-11-17T06:42:18.2494664Z ##[endgroup]
+2026-11-17T06:42:18.2505621Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2026-11-17T06:42:18.3115064Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2026-11-17T06:42:18.3599288Z ##[group]Checking out the ref
+2026-11-17T06:42:18.3611420Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force -B main refs/remotes/origin/main
+2026-11-17T06:42:18.7887277Z Switched to a new branch 'main'
+2026-11-17T06:42:18.8002109Z branch 'main' set up to track 'origin/main'.
+2026-11-17T06:42:18.8241256Z ##[endgroup]
+2026-11-17T06:42:18.8788952Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+2026-11-17T06:42:18.9224851Z df6010be983bd4b3c1fc6e570864c54487c3c5a6
+2026-11-17T06:42:18.9810928Z ##[group]Run actions/setup-node@v4
+2026-11-17T06:42:18.9811314Z with:
+2026-11-17T06:42:18.9811532Z   node-version: 24.14.0
+2026-11-17T06:42:18.9811725Z   cache: npm
+2026-11-17T06:42:18.9811918Z   always-auth: false
+2026-11-17T06:42:18.9812119Z   check-latest: false
+2026-11-17T06:42:18.9814972Z   token: ***
+2026-11-17T06:42:18.9815165Z ##[endgroup]
+2026-11-17T06:42:19.2274913Z Attempting to download 24.14.0...
+2026-11-17T06:42:19.2487710Z (node:4280) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-17T06:42:19.2489830Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-17T06:42:20.2282171Z Acquiring 24.14.0 - x64 from https://github.com/actions/node-versions/releases/download/24.14.0-22380502845/node-24.14.0-win32-x64.7z
+2026-11-17T06:42:20.6956665Z Extracting ...
+2026-11-17T06:42:22.9112149Z Adding to the cache ...
+2026-11-17T06:42:26.3043736Z ##[group]Environment details
+2026-11-17T06:42:27.6475588Z node: v24.14.0
+2026-11-17T06:42:27.6475921Z npm: 11.9.0
+2026-11-17T06:42:27.6476096Z yarn: 1.22.22
+2026-11-17T06:42:27.6476824Z ##[endgroup]
+2026-11-17T06:42:27.7103412Z [command]C:\Windows\system32\cmd.exe /D /S /C "C:\hostedtoolcache\windows\node\24.14.0\x64\npm.cmd config get cache"
+2026-11-17T06:42:28.0526489Z C:\npm\cache
+2026-11-17T06:42:28.4441683Z npm cache is not found
+2026-11-17T06:42:28.4822986Z ##[group]Run npm ci
+2026-11-17T06:42:28.4823420Z [36;1mnpm ci[0m
+2026-11-17T06:42:28.5510816Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-11-17T06:42:28.5511207Z ##[endgroup]
+2026-11-17T06:42:32.4018316Z 
+2026-11-17T06:42:32.4026954Z added 30 packages, and audited 31 packages in 3s
+2026-11-17T06:42:32.4027970Z 
+2026-11-17T06:42:32.4028400Z 9 packages are looking for funding
+2026-11-17T06:42:32.4031275Z   run `npm fund` for details
+2026-11-17T06:42:32.4036977Z 
+2026-11-17T06:42:32.4037333Z found 0 vulnerabilities
+2026-11-17T06:42:34.0128346Z ##[group]Run npm run build
+2026-11-17T06:42:34.0128771Z [36;1mnpm run build[0m
+2026-11-17T06:42:34.0199859Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-11-17T06:42:34.0200213Z ##[endgroup]
+2026-11-17T06:42:34.7036678Z 
+2026-11-17T06:42:34.7037410Z > releaseguard@0.1.0 build
+2026-11-17T06:42:34.7037887Z > npm run check && vite build
+2026-11-17T06:42:34.7038129Z 
+2026-11-17T06:42:34.9855971Z 
+2026-11-17T06:42:34.9856840Z > releaseguard@0.1.0 check
+2026-11-17T06:42:34.9857223Z > tsc --noEmit
+2026-11-17T06:42:34.9857348Z 
+2026-11-17T06:42:37.6655957Z [36mvite v8.3.8 [32mbuilding client environment for production...[36m[39m
+2026-11-17T06:42:37.6774181Z transforming...
+2026-11-17T06:42:37.7791341Z ✓ 111 modules transformed.
+2026-11-17T06:42:37.8120220Z rendering chunks...
+2026-11-17T06:42:37.8766116Z computing gzip size...
+2026-11-17T06:42:37.8844915Z dist/index.html                   0.79 kB │ gzip:   0.51 kB
+2026-11-17T06:42:37.8846171Z dist/assets/index-D_DUvHDn.css   12.15 kB │ gzip:   3.39 kB
+2026-11-17T06:42:37.8847069Z dist/assets/index-ChA7lEw0.js   335.94 kB │ gzip: 101.10 kB
+2026-11-17T06:42:37.8847506Z 
+2026-11-17T06:42:37.8852245Z [32m✓ built in 218ms[39m
+2026-11-17T06:42:38.4295814Z ##[group]Run npm test
+2026-11-17T06:42:38.4296184Z [36;1mnpm test[0m
+2026-11-17T06:42:38.4364964Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-11-17T06:42:38.4365312Z ##[endgroup]
+2026-11-17T06:42:39.1285959Z 
+2026-11-17T06:42:39.1287097Z > releaseguard@0.1.0 test
+2026-11-17T06:42:39.1287658Z > node --test test/*.test.ts
+2026-11-17T06:42:39.1287937Z 
+2026-11-17T06:42:39.6853997Z ✔ Clopper-Pearson intervals agree with independently generated SciPy references (26.1712ms)
+2026-11-17T06:42:39.6860968Z ✔ healthy matched evidence is eligible at the frozen first checkpoint (15.7009ms)
+2026-11-17T06:42:39.6862357Z ✔ a cohort regression cannot hide inside a healthy aggregate (10.9519ms)
+2026-11-17T06:42:39.6863712Z ✔ missing, underpowered, unbalanced, stale and unresolved evidence never advances (57.2847ms)
+2026-11-17T06:42:39.6864941Z ✔ a shared unhealthy dependency prevents advancement (7.7222ms)
+2026-11-17T06:42:39.6871964Z ✔ baseline uncertainty blocks promotion without hiding a proven candidate regression (5.3579ms)
+2026-11-17T06:42:39.6884432Z ✔ timeouts count as failed and slow; completed-only p95 excludes censored duration (7.5573ms)
+2026-11-17T06:42:39.6886387Z ✔ warmup and stable traffic do not enter the comparison (5.7737ms)
+2026-11-17T06:42:39.6913350Z ✔ policy rejects unplanned cohorts and unsafe inference settings (6.2349ms)
+2026-11-17T06:42:44.5864186Z (node:2572) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+2026-11-17T06:42:44.6055297Z (Use `node --trace-warnings ...` to show where the warning was created)
+2026-11-17T06:42:44.6321950Z ✔ an advance paused before reading router state cannot revive a completed stop (4919.101ms)
+2026-11-17T06:42:48.2511804Z ✔ stop reconciles a generation conflict before acknowledging withdrawal (3731.5366ms)
+2026-11-17T06:42:50.1809606Z (node:1888) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+2026-11-17T06:42:50.1819723Z (Use `node --trace-warnings ...` to show where the warning was created)
+2026-11-17T06:42:50.1821910Z ✔ real HTTP healthy candidate passes all three stages only after explicit fenced advances (5685.3844ms)
+2026-11-17T06:42:50.1828757Z ✔ real missing-metrics never advances and verifies withdrawal (2395.6397ms)
+2026-11-17T06:42:50.1830359Z ✔ real insufficient-traffic never advances and verifies withdrawal (2440.2718ms)
+2026-11-17T06:42:52.8997086Z ✔ real unbalanced-workload never advances and verifies withdrawal (2713.0813ms)
+2026-11-17T06:42:55.6977462Z ✔ real unhealthy-baseline never advances and verifies withdrawal (2808.7181ms)
+2026-11-17T06:42:56.7368648Z ✔ real candidate-crash never advances and verifies withdrawal (1039.5544ms)
+2026-11-17T06:42:57.9309832Z ✔ real lease-expiry never advances and verifies withdrawal (1193.7541ms)
+2026-11-17T06:43:00.4098168Z ✔ lease expiry blocks an eligible stage while preserving its earlier judgment (2473.9777ms)
+2026-11-17T06:43:02.3695768Z ✔ restart reconciles a surviving router and confirms baseline request versions (1964.5111ms)
+2026-11-17T06:43:04.3611623Z ✔ a delayed advance acknowledgement cannot revive a stopped run (1989.5401ms)
+2026-11-17T06:43:06.8332429Z ✔ duplicate and stale control commands remain fenced 101 (2474.0806ms)
+2026-11-17T06:43:09.3324730Z ✔ duplicate and stale control commands remain fenced 202 (2498.3286ms)
+2026-11-17T06:43:11.8434460Z ✔ duplicate and stale control commands remain fenced 303 (2510.7715ms)
+2026-11-17T06:43:13.8260904Z ✔ authenticated malformed lease commands cannot disable router expiry (1992.3369ms)
+2026-11-17T06:43:13.8640591Z ✔ HTTP boundary rejects unsafe origins, hosts, invalid policy, and unknown traffic targets (429.155ms)
+2026-11-17T06:43:13.8648177Z ✔ kill controller during stop and recover actual baseline routing 1 (6214.1665ms)
+2026-11-17T06:43:13.8649509Z ✔ kill controller during stop and recover actual baseline routing 2 (4185.614ms)
+2026-11-17T06:43:13.8655255Z ✔ kill controller during stop and recover actual baseline routing 3 (4240.3063ms)
+2026-11-17T06:43:13.8656312Z ℹ tests 29
+2026-11-17T06:43:13.8656641Z ℹ suites 0
+2026-11-17T06:43:13.8656932Z ℹ pass 29
+2026-11-17T06:43:13.8657231Z ℹ fail 0
+2026-11-17T06:43:13.8657707Z ℹ cancelled 0
+2026-11-17T06:43:13.8658069Z ℹ skipped 0
+2026-11-17T06:43:13.8658367Z ℹ todo 0
+2026-11-17T06:43:13.8658725Z ℹ duration_ms 34674.8002
+2026-11-17T06:43:13.9457130Z Post job cleanup.
+2026-11-17T06:43:14.1354254Z (node:8156) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-17T06:43:14.1356098Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-17T06:43:14.2629134Z [command]"C:\Program Files\Git\usr\bin\tar.exe" --posix -cf cache.tzst --exclude cache.tzst -P -C D:/a/releaseguard/releaseguard --files-from manifest.txt --force-local --use-compress-program "zstd -T0"
+2026-11-17T06:43:15.0068053Z (node:8156) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-17T06:43:15.9956143Z Sent 19529728 of 29693814 (65.8%), 18.6 MBs/sec
+2026-11-17T06:43:16.3297534Z Sent 29693814 of 29693814 (100.0%), 21.2 MBs/sec
+2026-11-17T06:43:16.5432210Z Cache saved with the key: node-cache-Windows-x64-npm-eff93aa45a530c9aa352a2e6964f4aab3cb4e5c809af234145a7dee30a8c6ac6
+2026-11-17T06:43:16.5958653Z Post job cleanup.
+2026-11-17T06:43:16.8336457Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-11-17T06:43:16.8735826Z git version 2.56.0.windows.4
+2026-11-17T06:43:16.8813802Z Temporarily overriding HOME='D:\a\_temp\d2e5dc38-f2d1-4d28-8a39-7554259c5e82' before making global git config changes
+2026-11-17T06:43:16.8814707Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-17T06:43:16.8825437Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\releaseguard\releaseguard
+2026-11-17T06:43:16.9252258Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-11-17T06:43:16.9673113Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-11-17T06:43:17.6045825Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-17T06:43:17.6422006Z http.https://github.com/.extraheader
+2026-11-17T06:43:17.6477184Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all http.https://github.com/.extraheader
+2026-11-17T06:43:17.6896080Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-11-17T06:43:18.3101171Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-17T06:43:18.3521846Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-11-17T06:43:19.0492235Z Cleaning up orphan processes
+2026-11-17T06:43:19.1098296Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

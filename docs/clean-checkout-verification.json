@@ -1,0 +1,180 @@
+{
+  "verifiedAt": "2026-11-17T06:45:10.578264+00:00",
+  "repository": "https://github.com/ngyathin16/releaseguard",
+  "applicationCommit": "87b4ef1368b872fe60f771712e3d70288d0877bc",
+  "workflowCommit": "df6010be983bd4b3c1fc6e570864c54487c3c5a6",
+  "windows": {
+    "checkout": "Fresh git clone from public GitHub main; no copied dependencies",
+    "environment": {
+      "node": "v24.14.0",
+      "npm": "11.9.0",
+      "platform": "win32",
+      "release": "10.0.26300"
+    },
+    "commands": [
+      {
+        "command": "npm ci",
+        "result": "passed; 30 packages installed, 0 audit findings",
+        "commit": "87b4ef1368b872fe60f771712e3d70288d0877bc"
+      },
+      {
+        "command": "npm run build",
+        "result": "passed strict TypeScript and Vite production build",
+        "commit": "87b4ef1368b872fe60f771712e3d70288d0877bc"
+      },
+      {
+        "command": "npm test",
+        "commit": "df6010be983bd4b3c1fc6e570864c54487c3c5a6",
+        "result": "passed 29 tests, 0 failed after fast-forwarding the remote clone to the portable lease-test revision"
+      }
+    ],
+    "sourceChangedByTests": false,
+    "generatedEvidenceChangedByTests": true
+  },
+  "ci": {
+    "runId": 44033149421,
+    "url": "https://github.com/ngyathin16/releaseguard/actions/runs/44033149421",
+    "commit": "df6010be983bd4b3c1fc6e570864c54487c3c5a6",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "id": 133869620802,
+        "name": "check (windows-latest)",
+        "url": "https://github.com/ngyathin16/releaseguard/actions/runs/44033149421/job/133869620802",
+        "status": "completed",
+        "conclusion": "success",
+        "completedAt": "2026-11-17T06:43:20Z",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm ci",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run build",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm test",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/setup-node@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ],
+        "tests": {
+          "passed": 29,
+          "failed": 0
+        }
+      },
+      {
+        "id": 133869621211,
+        "name": "check (ubuntu-latest)",
+        "url": "https://github.com/ngyathin16/releaseguard/actions/runs/44033149421/job/133869621211",
+        "status": "completed",
+        "conclusion": "success",
+        "completedAt": "2026-11-17T06:42:48Z",
+        "steps": [
+          {
+            "name": "Set up job",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm ci",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm run build",
+            "conclusion": "success"
+          },
+          {
+            "name": "Run npm test",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/setup-node@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "conclusion": "success"
+          },
+          {
+            "name": "Complete job",
+            "conclusion": "success"
+          }
+        ],
+        "tests": {
+          "passed": 29,
+          "failed": 0
+        }
+      }
+    ],
+    "node": "24.14.0",
+    "ubuntu": "26.04.1 LTS",
+    "logs": [
+      "evidence/ci/ubuntu-final.log",
+      "evidence/ci/windows-final.log"
+    ],
+    "scope": "Fresh GitHub checkout, npm ci, strict TypeScript and production build, and real local-process tests on each OS. No Linux browser pass claimed."
+  },
+  "localLinuxInterruption": "See linux-verification.json; local WSL installation succeeded but guest stalled before build/test commands. This record does not count that as a Linux pass.",
+  "previousCiAttempts": [
+    {
+      "runId": 44032354857,
+      "url": "https://github.com/ngyathin16/releaseguard/actions/runs/44032354857",
+      "commit": "85bb5a93552d332ca8dd223280f243379ad3e520",
+      "status": "completed",
+      "conclusion": "failure",
+      "jobs": [
+        {
+          "id": 133867062238,
+          "name": "check (windows-latest)",
+          "url": "https://github.com/ngyathin16/releaseguard/actions/runs/44032354857/job/133867062238",
+          "status": "completed",
+          "conclusion": "cancelled"
+        },
+        {
+          "id": 133867062667,
+          "name": "check (ubuntu-latest)",
+          "url": "https://github.com/ngyathin16/releaseguard/actions/runs/44032354857/job/133867062667",
+          "status": "completed",
+          "conclusion": "failure"
+        }
+      ],
+      "failure": "Ubuntu27/28: lease-expiry fixture reached an eligible checkpoint before its500ms lease expired; finish() returnedheld. Windows cancelled by failfast. Fix under review.",
+      "log": "evidence/ci/ubuntu-initial.log"
+    }
+  ],
+  "verificationCommit": "df6010be983bd4b3c1fc6e570864c54487c3c5a6",
+  "applicationSourceUnchanged": true
+}

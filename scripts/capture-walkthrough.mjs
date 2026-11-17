@@ -1,4 +1,7 @@
-import { mkdir, writeFile } from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
+import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
 
@@ -57,11 +60,32 @@ try {
   await holdUntil(64);
   await page.evaluate(() => scrollTo(0, 0));
   await caption('Export includes the policy, raw requests, judgments, and control events. Reanalyze the saved inputs to reproduce the same decision.');
-  await holdUntil(75);
-  const duration = seconds();
-  await writeFile(new URL('walkthrough.vtt', output), 'WEBVTT\n\n' + captions.map((item, index) => `${index + 1}\n${timestamp(item.start)} --> ${timestamp(captions[index + 1]?.start ?? duration)}\n${item.text}\n`).join('\n'));
-  await writeFile(new URL('walkthrough-capture.json', output), JSON.stringify({ capturedAt: new Date().toISOString(), mode: 'live local HTTP application, caption overlay only', browser: browser.version(), durationSeconds: duration, captions }, null, 2));
+  await holdUntil(72);
+  const workflowWallSeconds = seconds();
   const video = page.video();
   await context.close();
-  await video.saveAs(fileURLToPath(new URL('walkthrough.webm', output)));
+  const capturedVideo = new URL('candidate.webm', videoDirectory);
+  await video.saveAs(fileURLToPath(capturedVideo));
+  const playbackContext = await browser.newContext();
+  const playback = await playbackContext.newPage();
+  await playback.goto(capturedVideo.href);
+  await playback.waitForFunction(() => {
+    const video = document.querySelector('video');
+    return video && Number.isFinite(video.duration) && video.duration > 0;
+  });
+  const media = await playback.locator('video').evaluate(video => ({ duration: video.duration, width: video.videoWidth, height: video.videoHeight }));
+  assert(media.duration >= 60 && media.duration <= 90, `Expected a 60–90 second recording; actual media lasts ${media.duration} seconds.`);
+  assert.equal(media.width, 1440);
+  assert.equal(media.height, 1000);
+  await playbackContext.close();
+  await copyFile(capturedVideo, new URL('walkthrough.webm', output));
+  await writeFile(new URL('walkthrough.vtt', output), 'WEBVTT\n\n' + captions.map((item, index) => `${index + 1}\n${timestamp(item.start)} --> ${timestamp(captions[index + 1]?.start ?? media.duration)}\n${item.text}\n`).join('\n'));
+  const sourceSha256 = {};
+  for (const name of ['ui/main.tsx', 'ui/style.css', 'src/runtime.ts', 'src/analysis.ts', 'scripts/capture-walkthrough.mjs']) {
+    sourceSha256[name] = createHash('sha256').update(await readFile(new URL(`../${name}`, import.meta.url))).digest('hex');
+  }
+  await writeFile(new URL('walkthrough-capture.json', output), JSON.stringify({ capturedAt: new Date().toISOString(), mode: 'Recorded live local HTTP application; caption overlay only, no simulated responses', base, browser: browser.version(), platform: process.platform,
+    sourceCommit: execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(), sourceSha256,
+    durationSeconds: media.duration, workflowWallSeconds, media, captions }, null, 2) + '\n');
+  process.stdout.write(`Recorded ${media.duration.toFixed(2)} seconds; validated 1440×1000 media, embedded captions and WebVTT.\n`);
 } finally { await browser.close(); }

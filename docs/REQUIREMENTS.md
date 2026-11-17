@@ -89,4 +89,3 @@ P1 after P0: importing a documented telemetry format, one read-only metrics inte
 - **Evidence package:** README, architecture/tradeoffs, evaluation dataset and manifest, raw results, failure analysis, screenshots, and a 60–90 second captioned walkthrough. Every claimed result links to a reproduction artifact.
 
 Validate usability with three representative reviewers if available: an analyst, a service engineer, and a technically literate person unfamiliar with the project. Target unaided completion of each product’s core story within five minutes after launch. Record task completion, confusing steps, and revisions; do not describe agent/browser testing as human validation. Lack of access to participants is disclosed rather than replaced with invented feedback.
-
